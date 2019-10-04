@@ -13,11 +13,11 @@ api = Api(app)
 
 #Route
 api.add_resource(Arpenp,'/arpenp')
-api.add_resource(Cadesp,'/cadesp')
+# api.add_resource(Cadesp,'/cadesp')
 api.add_resource(Caged, '/caged')
 api.add_resource(Censec, '/censec')
 api.add_resource(Detran, '/detran')
 api.add_resource(Infocrim, '/infocrim')
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)

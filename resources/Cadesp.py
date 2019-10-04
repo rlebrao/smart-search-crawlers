@@ -9,9 +9,8 @@ class Cadesp(Resource):
     HOSTNAME = 'http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com'
     SITE_NAME = 'cadesp'
     TARGET_URL = "{}/{}/login.html".format(HOSTNAME,SITE_NAME)
-    
+
     def getBsObject(self, url_next_layer):
-        print("Requesting URL: " + url_next_layer+'\n')
         # print("\n requesting URL:", url_next_layer)
         res_layer = requests.get(url_next_layer).content
         return BeautifulSoup(res_layer, features="lxml")

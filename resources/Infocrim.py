@@ -63,8 +63,33 @@ class Infocrim(Resource):
         bs_obj = self.getBsObject(self.TARGET_URL)
         page2_url = bs_obj.find('img',{'alt':'Envia dados'}).find_parent("a").get("href")
         page2_url = self.get_full_url(page2_url) 
-        print(page2_url)   
+        
+        bs_obj2 = self.getBsObject(page2_url)
+        page3_url = bs_obj2.find("a",id="submit").get("href")
+        page3_url = self.get_full_url(page3_url)
+
+        bs_obj3 = self.getBsObject(page3_url)
+        page4_url = bs_obj3.find('a', text="79/2014").get("href")
+        page4_url = self.get_full_url(page4_url)
+
+        bs_obj4 = self.getBsObject(page4_url)
+
+        #Crime section
+        info_crime_txt = bs_obj4.find("pre").getText()
+        json_response = {}
+        json_response['crime'] = {}
+
+        json_response['crime']['natureza'] = self.getFieldFromTxt("(?<=Natureza\(s\)\s\:\s).*",info_crime_txt).strip()
+        json_response['crime']['local'] = self.getFieldFromTxt("(?<=Local\s\s\s\s\s\s\s\:\s).*", info_crime_txt).strip()
+        json_response['crime']['complemento'] = self.getFieldFromTxt("(?<=Complemento\s\s\s\s\s\s\:\s)(?:(?!\s\-).)*", info_crime_txt)
+        json_response['crime']['tipo_local'] = self.getFieldFromTxt("(?<=Tipo-Local\s\s\s\s\s\s\:\s)(?:(?!\-).)*", info_crime_txt)
+        json_response['crime']['data_ocorrencia'] = self.getFieldFromTxt("(?<=Data Ocorrencia\s\s\s\s\s\s\:\s)(?:(?!\s\s\s\sHORA).)*", info_crime_txt)
+        json_response['crime']['data_comunicacao'] = self.getFieldFromTxt("(?<=Data Comunicacao\s\s\s\s\s\s\s\:\s)(?:(?!\s\s\s\s\sHORA).)*", info_crime_txt)
+
+
+        pessoas_crime = bs_obj4.find("pre").getText()
         return ""
+
     def post(self):
         params = request.get_json()
         print("Buscando: " + params['cpf'])
@@ -74,4 +99,4 @@ class Infocrim(Resource):
         except Exception as e:
             isTest = False
         result = self.do_crawler()
-        return result
+        return result   

@@ -4,14 +4,19 @@ import re
 from bs4 import BeautifulSoup
 import json
 from flask import jsonify, request
+import logging
 
 class Caged(Resource):
     HOSTNAME = 'http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com'
     SITE_NAME = 'caged'   
     TARGET_URL = "{}/{}/login.html".format(HOSTNAME,SITE_NAME)
-    
+
+    logging.basicConfig(filename='logs/'+SITE_NAME+'.log',level=logging.DEBUG)
+
+    logging.debug("------------Searching in CAGED------------\n")
+
     def getBsObject(self, url_next_layer):
-        print("Requesting URL: " + url_next_layer+'\n')
+        logging.debug("Requesting URL: " + url_next_layer+'\n')
         # print("\n requesting URL:", url_next_layer)
         res_layer = requests.get(url_next_layer).content
         return BeautifulSoup(res_layer, features="lxml")
@@ -175,4 +180,5 @@ class Caged(Resource):
         json_response = result_autorizado_responsavel.copy()
         json_response.update(result_empresa)
         json_response.update(result_trabalhador)
+        logging.info(json_response)
         return json_response
