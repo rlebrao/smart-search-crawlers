@@ -5,13 +5,17 @@ from bs4 import BeautifulSoup
 import json
 from flask import jsonify, request
 import logging
+import os 
 
 class Caged(Resource):
     HOSTNAME = 'http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com'
     SITE_NAME = 'caged'   
     TARGET_URL = "{}/{}/login.html".format(HOSTNAME,SITE_NAME)
-
-    logging.basicConfig(filename='logs/'+SITE_NAME+'.log',level=logging.DEBUG)
+    
+    dirname = os.path.dirname(__file__)
+    filename_log = os.path.join(dirname, '../logs/'+SITE_NAME+'.log')
+    
+    logging.basicConfig(filename=filename_log,level=logging.DEBUG)
 
     logging.debug("------------Searching in CAGED------------\n")
 
