@@ -38,10 +38,14 @@ class Detran(Resource):
             print('Downloading Pdf file...')
             f.write(r.content)
         print("Download completed")
-        PDF_pages = convert_from_path(PDF_file_path, 500)
+        try:
+            PDF_pages = convert_from_path(PDF_file_path, 500)
+        except e:
+            print(e)
         image_counter = 1
         for page in PDF_pages:
             print("Converting to .png...")
+            dirname = os.path.dirname(__file__)
             filename = os.path.join(dirname, 'page_'+ str(image_counter) +".jpg")
             page.save(filename, 'JPEG')
             image_counter = image_counter + 1
