@@ -18,6 +18,7 @@ class Detran(Resource):
     TARGET_URL = "{}/{}/login.html".format(HOSTNAME,SITE_NAME)
     PDF_FILES = os.path.join(dirname, '../pdf-files/')
     TXT_FILES = os.path.join(dirname, '../txt-files/')
+
     def getBsObject(self, url_next_layer):
         print("Requesting URL: " + url_next_layer+'\n')
         # print("\n requesting URL:", url_next_layer)
@@ -41,7 +42,7 @@ class Detran(Resource):
         image_counter = 1
         for page in PDF_pages:
             print("Converting to .png...")
-            filename = "page_" + str(image_counter) +".jpg"
+            filename = os.path.join(dirname, 'page_'+ str(image_counter) +".jpg")
             page.save(filename, 'JPEG')
             image_counter = image_counter + 1
 
