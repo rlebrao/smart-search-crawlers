@@ -88,7 +88,7 @@ class Infocrim(Resource):
 
 
         pessoas_crime = bs_obj4.find("pre").getText()
-        return ""
+        return json_response
 
     def post(self):
         params = request.get_json()
