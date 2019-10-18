@@ -51,3 +51,137 @@ DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-18-231-116-58
 DEBUG:urllib3.connectionpool:http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80 "GET /caged/pagina9-dados-trabalhador.html HTTP/1.1" 200 47197
 INFO:root:{'autorizado_responsavel': {'identificacao': {'cnpj': '20.501.854/0001-69', 'razao_social': 'MARRETA ENGENHARIA E CONSTRUCAO LTD'}, 'dados_cadastrais_atualizados': {'logradouro': 'RUA TEODOLINO PEREIRA', 'bairo_distrito': 'GRAO PARA', 'municipio': 'TEOFILO OTONI', 'uf': 'MINAS GERAIS', 'cep': '39.800-151'}, 'contato': {'nome': 'CRISTIANO ROMARIO RAMOS', 'cpf': '078.537.067-21', 'telefone': '00202', 'email': 'CRISTIANOROMARIO@CONSTRUTORAMARRETA.COM.BR'}}, 'dados_da_empresa': {'cnae': '4120400'}, 'totais': {'num_admissoes': '80', 'variacao_absoluta': '41', 'total_vinculos': '420', 'desligamentos': '39', 'num_primeiro_dia': '379', 'num_ultimo_dia': '420'}, 'ultima_atualizacao': '05/2019', 'identificacao': {'nome': 'KLAUDIO TAFFAREL', 'pis': 'PIS Base'}, 'dados_cadastrais': {'cpf': '360.123.198-74', 'data_nascimento': 'Data de Nascimento', 'ctps': 'CTPS/Série', 'situacao_pis': 'Faixa SUS', 'nacionalidade': 'Nacionalidade', 'escolaridade': 'SUPERIOR COMPLETO'}, 'tempo_trabalho': {'caged': '9', 'rais': '118'}, 'historico_trabalho': {0: {'fonte': 'RAIS', 'razao social': 'RHBRASIL SERVICOS TEMPORARIOS LTDA', 'cnpj': '01.395.176/0016-39', 'cei': '', 'entrada': '03/08/2009', 'saida': '18/12/2009', 'situacao': 'Fechado'}, 1: {'fonte': 'RAIS', 'razao social': 'RHBRASIL SERVICOS TEMPORARIOS LTDA', 'cnpj': '01.395.176/0016-39', 'cei': '', 'entrada': '03/08/2009', 'saida': '18/12/2009', 'situacao': 'Fechado'}, 2: {'fonte': 'RAIS', 'razao social': 'RHBRASIL SERVICOS TEMPORARIOS LTDA', 'cnpj': '01.395.176/0016-39', 'cei': '', 'entrada': '03/08/2009', 'saida': '18/12/2009', 'situacao': 'Fechado'}, 3: {'fonte': 'RAIS', 'razao social': 'RHBRASIL SERVICOS TEMPORARIOS LTDA', 'cnpj': '01.395.176/0016-39', 'cei': '', 'entrada': '03/08/2009', 'saida': '18/12/2009', 'situacao': 'Fechado'}, 4: {'fonte': 'RAIS', 'razao social': 'RHBRASIL SERVICOS TEMPORARIOS LTDA', 'cnpj': '01.395.176/0016-39', 'cei': '', 'entrada': '03/08/2009', 'saida': '18/12/2009', 'situacao': 'Fechado'}, 5: {'fonte': 'RAIS', 'razao social': 'RHBRASIL SERVICOS TEMPORARIOS LTDA', 'cnpj': '01.395.176/0016-39', 'cei': '', 'entrada': '03/08/2009', 'saida': '18/12/2009', 'situacao': 'Fechado'}, 6: {'fonte': 'RAIS', 'razao social': 'RHBRASIL SERVICOS TEMPORARIOS LTDA', 'cnpj': '01.395.176/0016-39', 'cei': '', 'entrada': '03/08/2009', 'saida': '18/12/2009', 'situacao': 'Fechado'}}}
 INFO:werkzeug:127.0.0.1 - - [04/Oct/2019 09:17:00] "POST /caged HTTP/1.1" 200 -
+DEBUG:root:------------Searching in CAGED------------
+
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80
+DEBUG:urllib3.connectionpool:http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80 "GET /arpensp/login.html HTTP/1.1" 200 14661
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80
+DEBUG:urllib3.connectionpool:http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80 "GET /arpensp/pagina2-pesquisa.html HTTP/1.1" 200 21235
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80
+DEBUG:urllib3.connectionpool:http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80 "GET /arpensp/pagina3-busca.html HTTP/1.1" 200 24232
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80
+DEBUG:urllib3.connectionpool:http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80 "GET /arpensp/pagina4-resultado.html HTTP/1.1" 200 17691
+INFO:werkzeug:127.0.0.1 - - [17/Oct/2019 23:06:39] "POST /arpenp HTTP/1.1" 200 -
+DEBUG:root:Requesting URL: http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/caged/login.html
+
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80
+DEBUG:urllib3.connectionpool:http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80 "GET /caged/login.html HTTP/1.1" 200 6272
+DEBUG:root:Requesting URL: http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/caged/pagina2-pesquisa.html
+
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80
+DEBUG:urllib3.connectionpool:http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80 "GET /caged/pagina2-pesquisa.html HTTP/1.1" 200 10838
+DEBUG:root:Requesting URL: http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/caged/pagina3-consulta-autorizado-responsavel.html
+
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80
+DEBUG:urllib3.connectionpool:http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80 "GET /caged/pagina3-consulta-autorizado-responsavel.html HTTP/1.1" 200 14555
+DEBUG:root:Requesting URL: http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/caged/pagina7-dados-autorizado-responsavel.html
+
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80
+DEBUG:urllib3.connectionpool:http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80 "GET /caged/pagina7-dados-autorizado-responsavel.html HTTP/1.1" 200 63575
+DEBUG:root:Requesting URL: http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/caged/login.html
+
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80
+DEBUG:urllib3.connectionpool:http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80 "GET /caged/login.html HTTP/1.1" 200 6272
+DEBUG:root:Requesting URL: http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/caged/pagina2-pesquisa.html
+
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80
+DEBUG:urllib3.connectionpool:http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80 "GET /caged/pagina2-pesquisa.html HTTP/1.1" 200 10838
+DEBUG:root:Requesting URL: http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/caged/pagina4-consulta-empresa.html
+
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80
+DEBUG:urllib3.connectionpool:http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80 "GET /caged/pagina4-consulta-empresa.html HTTP/1.1" 200 14433
+DEBUG:root:Requesting URL: http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/caged/pagina8-dados-empresa.html
+
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80
+DEBUG:urllib3.connectionpool:http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80 "GET /caged/pagina8-dados-empresa.html HTTP/1.1" 200 14951
+DEBUG:root:Requesting URL: http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/caged/login.html
+
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80
+DEBUG:urllib3.connectionpool:http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80 "GET /caged/login.html HTTP/1.1" 200 6272
+DEBUG:root:Requesting URL: http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/caged/pagina2-pesquisa.html
+
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80
+DEBUG:urllib3.connectionpool:http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80 "GET /caged/pagina2-pesquisa.html HTTP/1.1" 200 10838
+DEBUG:root:Requesting URL: http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/caged/pagina6-consulta-trabalhador.html
+
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80
+DEBUG:urllib3.connectionpool:http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80 "GET /caged/pagina6-consulta-trabalhador.html HTTP/1.1" 200 14386
+DEBUG:root:Requesting URL: http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/caged/pagina9-dados-trabalhador.html
+
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80
+DEBUG:urllib3.connectionpool:http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80 "GET /caged/pagina9-dados-trabalhador.html HTTP/1.1" 200 47197
+INFO:root:{'autorizado_responsavel': {'identificacao': {'cnpj': '20.501.854/0001-69', 'razao_social': 'MARRETA ENGENHARIA E CONSTRUCAO LTD'}, 'dados_cadastrais_atualizados': {'logradouro': 'RUA TEODOLINO PEREIRA', 'bairo_distrito': 'GRAO PARA', 'municipio': 'TEOFILO OTONI', 'uf': 'MINAS GERAIS', 'cep': '39.800-151'}, 'contato': {'nome': 'CRISTIANO ROMARIO RAMOS', 'cpf': '078.537.067-21', 'telefone': '00202', 'email': 'CRISTIANOROMARIO@CONSTRUTORAMARRETA.COM.BR'}}, 'dados_da_empresa': {'cnae': '4120400'}, 'totais': {'num_admissoes': '80', 'variacao_absoluta': '41', 'total_vinculos': '420', 'desligamentos': '39', 'num_primeiro_dia': '379', 'num_ultimo_dia': '420'}, 'ultima_atualizacao': '05/2019', 'identificacao': {'nome': 'KLAUDIO TAFFAREL', 'pis': 'PIS Base'}, 'dados_cadastrais': {'cpf': '360.123.198-74', 'data_nascimento': 'Data de Nascimento', 'ctps': 'CTPS/Série', 'situacao_pis': 'Faixa SUS', 'nacionalidade': 'Nacionalidade', 'escolaridade': 'SUPERIOR COMPLETO'}, 'tempo_trabalho': {'caged': '9', 'rais': '118'}, 'historico_trabalho': {0: {'fonte': 'RAIS', 'razao social': 'RHBRASIL SERVICOS TEMPORARIOS LTDA', 'cnpj': '01.395.176/0016-39', 'cei': '', 'entrada': '03/08/2009', 'saida': '18/12/2009', 'situacao': 'Fechado'}, 1: {'fonte': 'RAIS', 'razao social': 'RHBRASIL SERVICOS TEMPORARIOS LTDA', 'cnpj': '01.395.176/0016-39', 'cei': '', 'entrada': '03/08/2009', 'saida': '18/12/2009', 'situacao': 'Fechado'}, 2: {'fonte': 'RAIS', 'razao social': 'RHBRASIL SERVICOS TEMPORARIOS LTDA', 'cnpj': '01.395.176/0016-39', 'cei': '', 'entrada': '03/08/2009', 'saida': '18/12/2009', 'situacao': 'Fechado'}, 3: {'fonte': 'RAIS', 'razao social': 'RHBRASIL SERVICOS TEMPORARIOS LTDA', 'cnpj': '01.395.176/0016-39', 'cei': '', 'entrada': '03/08/2009', 'saida': '18/12/2009', 'situacao': 'Fechado'}, 4: {'fonte': 'RAIS', 'razao social': 'RHBRASIL SERVICOS TEMPORARIOS LTDA', 'cnpj': '01.395.176/0016-39', 'cei': '', 'entrada': '03/08/2009', 'saida': '18/12/2009', 'situacao': 'Fechado'}, 5: {'fonte': 'RAIS', 'razao social': 'RHBRASIL SERVICOS TEMPORARIOS LTDA', 'cnpj': '01.395.176/0016-39', 'cei': '', 'entrada': '03/08/2009', 'saida': '18/12/2009', 'situacao': 'Fechado'}, 6: {'fonte': 'RAIS', 'razao social': 'RHBRASIL SERVICOS TEMPORARIOS LTDA', 'cnpj': '01.395.176/0016-39', 'cei': '', 'entrada': '03/08/2009', 'saida': '18/12/2009', 'situacao': 'Fechado'}}}
+INFO:werkzeug:127.0.0.1 - - [17/Oct/2019 23:06:53] "POST /caged HTTP/1.1" 200 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80
+DEBUG:urllib3.connectionpool:http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80 "GET /cadesp/login.html HTTP/1.1" 200 44239
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80
+DEBUG:urllib3.connectionpool:http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80 "GET /cadesp/pagina2-pesquisa.html HTTP/1.1" 200 26465
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80
+DEBUG:urllib3.connectionpool:http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80 "GET /cadesp/pagina3-pesquisa.html HTTP/1.1" 200 552098
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80
+DEBUG:urllib3.connectionpool:http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80 "GET /cadesp/pagina4-dados.html?txtIdentificacao=2342342 HTTP/1.1" 200 52266
+INFO:werkzeug:127.0.0.1 - - [17/Oct/2019 23:07:11] "POST /cadesp HTTP/1.1" 200 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80
+DEBUG:urllib3.connectionpool:http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80 "GET /censec/login.html HTTP/1.1" 200 16097
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80
+DEBUG:urllib3.connectionpool:http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80 "GET /censec/pagina2-pesquisa.html HTTP/1.1" 200 30712
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80
+DEBUG:urllib3.connectionpool:http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80 "GET /censec/pagina3-pesquisa.html HTTP/1.1" 200 40959
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80
+DEBUG:urllib3.connectionpool:http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80 "GET /censec/pagina4-resultado.html HTTP/1.1" 200 43767
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80
+DEBUG:urllib3.connectionpool:http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80 "GET /censec/pagina5-dados.html HTTP/1.1" 200 50741
+INFO:werkzeug:127.0.0.1 - - [17/Oct/2019 23:07:28] "POST /censec HTTP/1.1" 200 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80
+DEBUG:urllib3.connectionpool:http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80 "GET /detran/login.html HTTP/1.1" 200 28945
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80
+DEBUG:urllib3.connectionpool:http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80 "GET /detran/pagina2-pesquisa.html HTTP/1.1" 200 21683
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80
+DEBUG:urllib3.connectionpool:http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80 "GET /detran/pagina3-pesquisa-linha-de-vida.html HTTP/1.1" 200 131738
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80
+DEBUG:urllib3.connectionpool:http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80 "GET /detran/pagina6-relat%C3%B3rio-linha-de-vida.pdf HTTP/1.1" 200 225450
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80
+DEBUG:urllib3.connectionpool:http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80 "GET /detran/pagina4-pesquisa-imagem-cnh.html HTTP/1.1" 200 27703
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80
+DEBUG:urllib3.connectionpool:http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80 "GET /detran/pagina7-imagem-cnh.html HTTP/1.1" 200 46089
+INFO:werkzeug:127.0.0.1 - - [17/Oct/2019 23:08:03] "POST /detran HTTP/1.1" 200 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80
+DEBUG:urllib3.connectionpool:http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80 "GET /infocrim/login.html HTTP/1.1" 200 11519
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80
+DEBUG:urllib3.connectionpool:http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80 "GET /infocrim/pagina2-pesquisa.html HTTP/1.1" 200 133737
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80
+DEBUG:urllib3.connectionpool:http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80 "GET /infocrim/pagina3-dados.html HTTP/1.1" 200 17491
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80
+DEBUG:urllib3.connectionpool:http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80 "GET /infocrim/pagina4-detalhes-bo.html HTTP/1.1" 200 8836
+INFO:werkzeug:127.0.0.1 - - [17/Oct/2019 23:08:16] "POST /infocrim HTTP/1.1" 200 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80
+DEBUG:urllib3.connectionpool:http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80 "GET /infocrim/login.html HTTP/1.1" 200 11519
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80
+DEBUG:urllib3.connectionpool:http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80 "GET /infocrim/pagina2-pesquisa.html HTTP/1.1" 200 133737
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80
+DEBUG:urllib3.connectionpool:http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80 "GET /infocrim/pagina3-dados.html HTTP/1.1" 200 17491
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80
+DEBUG:urllib3.connectionpool:http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80 "GET /infocrim/pagina4-detalhes-bo.html HTTP/1.1" 200 8836
+INFO:werkzeug:127.0.0.1 - - [17/Oct/2019 23:08:44] "POST /infocrim HTTP/1.1" 200 -
+DEBUG:root:------------Searching in CAGED------------
+
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80
+DEBUG:urllib3.connectionpool:http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80 "GET /infocrim/login.html HTTP/1.1" 200 11519
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80
+DEBUG:urllib3.connectionpool:http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80 "GET /infocrim/pagina2-pesquisa.html HTTP/1.1" 200 133737
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80
+DEBUG:urllib3.connectionpool:http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80 "GET /infocrim/pagina3-dados.html HTTP/1.1" 200 17491
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80
+DEBUG:urllib3.connectionpool:http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80 "GET /infocrim/pagina4-detalhes-bo.html HTTP/1.1" 200 8836
+INFO:werkzeug:127.0.0.1 - - [17/Oct/2019 23:09:11] "POST /infocrim HTTP/1.1" 200 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80
+DEBUG:urllib3.connectionpool:http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80 "GET /infocrim/login.html HTTP/1.1" 200 11519
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80
+DEBUG:urllib3.connectionpool:http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80 "GET /infocrim/pagina2-pesquisa.html HTTP/1.1" 200 133737
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80
+DEBUG:urllib3.connectionpool:http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80 "GET /infocrim/pagina3-dados.html HTTP/1.1" 200 17491
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80
+DEBUG:urllib3.connectionpool:http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com:80 "GET /infocrim/pagina4-detalhes-bo.html HTTP/1.1" 200 8836
+INFO:werkzeug:127.0.0.1 - - [17/Oct/2019 23:39:45] "POST /infocrim HTTP/1.1" 200 -
