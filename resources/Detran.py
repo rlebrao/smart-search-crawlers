@@ -18,7 +18,7 @@ class Detran(Resource):
     dirname = os.path.dirname
     PDF_FILES = os.path.join(dirname(dirname(__file__)), 'pdf-files')
     TXT_FILES = os.path.join(dirname(dirname(__file__)), 'txt-files')
-    DETRAN_LOG_PATH = os.path.join(dirname(dirname(__file__),'logs'))
+    DETRAN_LOG_PATH = os.path.join(dirname(dirname(__file__)),'logs')
 
     logging.baseConfig(filename=DETRAN_LOG_PATH+"/detran.log")
     def getBsObject(self, url_next_layer):
