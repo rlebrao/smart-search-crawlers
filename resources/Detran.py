@@ -9,6 +9,7 @@ import pytesseract
 import sys
 import os
 from pdf2image import convert_from_path
+import logging
 class Detran(Resource):
     
     HOSTNAME = 'http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com'
@@ -17,7 +18,9 @@ class Detran(Resource):
     dirname = os.path.dirname
     PDF_FILES = os.path.join(dirname(dirname(__file__)), 'pdf-files')
     TXT_FILES = os.path.join(dirname(dirname(__file__)), 'txt-files')
+    DETRAN_LOG_PATH = os.path.join(dirname(dirname(__file__),'logs'))
 
+    logging.baseConfig(filename=DETRAN_LOG_PATH+"/detran.log")
     def getBsObject(self, url_next_layer):
         print("Requesting URL: " + url_next_layer+'\n')
         # print("\n requesting URL:", url_next_layer)
@@ -84,8 +87,8 @@ class Detran(Resource):
         if isTest == False:
             try:
                 self.ocr_download_content(pdf_url, PDF_file_path, TXT_file_path)
-            except Exception e:
-                print(e)
+            except Exception as e:
+                logging.error(e)
         pdf_content = open(TXT_file_path, "r")
         txt_content = pdf_content.read()
 
