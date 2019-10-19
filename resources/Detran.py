@@ -39,9 +39,9 @@ class Detran(Resource):
         print("Download completed")
         PDF_pages = convert_from_path(PDF_file_path, 500)
         image_counter = 1
+        dirname = os.path.dirname
         for page in PDF_pages:
             print("Converting to .png...")
-            dirname = os.path.dirname
             filename = os.path.join(dirname(dirname(__file__)), 'page_'+ str(image_counter) +".jpg")
             print(filename)
             # filename = os.path.abspath('page_'+ str(image_counter) +".jpg")
