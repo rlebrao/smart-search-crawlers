@@ -40,7 +40,7 @@ class Detran(Resource):
             print('Downloading Pdf file...')
             f.write(r.content)
         print("Download completed")
-        PDF_pages = convert_from_path(PDF_file_path, 500)
+        PDF_pages = convert_from_path(PDF_file_path, 150)
         image_counter = 1
         dirname = os.path.dirname
         for page in PDF_pages:
