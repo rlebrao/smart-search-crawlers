@@ -11,8 +11,6 @@ import os
 from pdf2image import convert_from_path
 class Detran(Resource):
     
-    dirname = os.path.dirname(__file__)
-
     HOSTNAME = 'http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com'
     SITE_NAME = 'detran'
     TARGET_URL = "{}/{}/login.html".format(HOSTNAME,SITE_NAME)
@@ -43,8 +41,10 @@ class Detran(Resource):
         image_counter = 1
         for page in PDF_pages:
             print("Converting to .png...")
-            dirname = os.path.dirname(__file__)
-            filename = os.path.abspath('page_'+ str(image_counter) +".jpg")
+            dirname = os.path.dirname
+            filename = os.path.join(dirname(dirname(__file__)), 'page_'+ str(image_counter) +".jpg")
+            print(filename)
+            # filename = os.path.abspath('page_'+ str(image_counter) +".jpg")
             page.save(filename, 'JPEG')
             image_counter = image_counter + 1
 
