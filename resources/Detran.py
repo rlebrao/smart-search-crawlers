@@ -16,9 +16,9 @@ class Detran(Resource):
     HOSTNAME = 'http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com'
     SITE_NAME = 'detran'
     TARGET_URL = "{}/{}/login.html".format(HOSTNAME,SITE_NAME)
-    PDF_FILES = os.path.abspath("pdf-files/")
-    TXT_FILES = os.path.abspath("txt-files/")
-
+    dirname = os.path.dirname
+    PDF_FILES = os.path.join(dirname(dirname(__file__)), 'pdf-files')
+    TXT_FILES = os.path.join(dirname(dirname(__file__)), 'txt-files')
 
     def getBsObject(self, url_next_layer):
         print("Requesting URL: " + url_next_layer+'\n')
