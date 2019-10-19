@@ -4,13 +4,12 @@ import re
 from bs4 import BeautifulSoup
 import json
 from flask import jsonify, request
-import logging
-import os 
 from PIL import Image
 import pytesseract
 import sys
 import os
 from pdf2image import convert_from_path
+import logging
 
 class Jucesp(Resource):
     HOSTNAME = 'http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com'
