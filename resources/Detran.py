@@ -52,7 +52,7 @@ class Detran(Resource):
         outfile =  TXT_file_path
         f = open(outfile, 'a', encoding='utf-8')
         for i in range(1, filelimit +1):
-            filename = os.path.abspath("page_"+str(i)+".jpg")
+            filename = os.path.join(dirname(dirname(__file__)), "page_"+str(i)+".jpg")
             text = str((pytesseract.image_to_string(Image.open(filename)))) 
             text = text.replace('-\n', '').replace("b'", "").replace(r"\r\n","")
             f.write(text)
