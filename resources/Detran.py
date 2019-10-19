@@ -20,7 +20,7 @@ class Detran(Resource):
     TXT_FILES = os.path.join(dirname(dirname(__file__)), 'txt-files')
     DETRAN_LOG_PATH = os.path.join(dirname(dirname(__file__)),'logs')
 
-    logging.baseConfig(filename=DETRAN_LOG_PATH+"/detran.log")
+    logging.basicConfig(filename=DETRAN_LOG_PATH+"/detran.log")
     def getBsObject(self, url_next_layer):
         print("Requesting URL: " + url_next_layer+'\n')
         # print("\n requesting URL:", url_next_layer)
