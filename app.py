@@ -8,6 +8,8 @@ from resources.Censec import Censec
 from resources.Detran import Detran
 from resources.Infocrim import Infocrim
 from resources.Juscesp import Jucesp
+from resources.Siel import Siel
+from resources.Sivec import Sivec
 
 app = Flask(__name__)
 api = Api(app)
@@ -20,6 +22,8 @@ api.add_resource(Censec, '/censec')
 api.add_resource(Detran, '/detran')
 api.add_resource(Infocrim, '/infocrim')
 api.add_resource(Jucesp, '/jucesp')
+api.add_resource(Siel, '/siel')
+api.add_resource(Sivec, '/sivec')
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)
