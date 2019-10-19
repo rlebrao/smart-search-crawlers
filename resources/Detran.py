@@ -16,8 +16,9 @@ class Detran(Resource):
     HOSTNAME = 'http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com'
     SITE_NAME = 'detran'
     TARGET_URL = "{}/{}/login.html".format(HOSTNAME,SITE_NAME)
-    PDF_FILES = os.path.join(dirname, '../pdf-files/')
-    TXT_FILES = os.path.join(dirname, '../txt-files/')
+    PDF_FILES = os.path.abspath("pdf-files/")
+    TXT_FILES = os.path.abspath("txt-files/")
+
 
     def getBsObject(self, url_next_layer):
         print("Requesting URL: " + url_next_layer+'\n')
@@ -43,7 +44,7 @@ class Detran(Resource):
         for page in PDF_pages:
             print("Converting to .png...")
             dirname = os.path.dirname(__file__)
-            filename = os.path.join(dirname, 'page_'+ str(image_counter) +".jpg")
+            filename = os.path.abspath('page_'+ str(image_counter) +".jpg")
             page.save(filename, 'JPEG')
             image_counter = image_counter + 1
 
@@ -51,7 +52,7 @@ class Detran(Resource):
         outfile =  TXT_file_path
         f = open(outfile, 'a', encoding='utf-8')
         for i in range(1, filelimit +1):
-            filename = "page_"+str(i)+".jpg"
+            filename = os.path.abspath("page_"+str(i)+".jpg")
             text = str((pytesseract.image_to_string(Image.open(filename)))) 
             text = text.replace('-\n', '').replace("b'", "").replace(r"\r\n","")
             f.write(text)
@@ -78,7 +79,7 @@ class Detran(Resource):
         pdf_url = self.get_full_url(bs_obj3.find('span',text="Pesquisar").find_parent('a').get('href'))
         
         #PDF Converting
-        PDF_file_path = '{}/{}.pdf'.format(self.PDF_FILES, bs_obj3.find('span',text="Pesquisar").find_parent('a').get('href'))
+        PDF_file_path = '{}/{}'.format(self.PDF_FILES, bs_obj3.find('span',text="Pesquisar").find_parent('a').get('href'))
         TXT_file_path = '{}/detran_information.txt'.format(self.TXT_FILES)
         if isTest == False:
             self.ocr_download_content(pdf_url, PDF_file_path, TXT_file_path)
