@@ -82,8 +82,10 @@ class Detran(Resource):
         PDF_file_path = '{}/{}'.format(self.PDF_FILES, bs_obj3.find('span',text="Pesquisar").find_parent('a').get('href'))
         TXT_file_path = '{}/detran_information.txt'.format(self.TXT_FILES)
         if isTest == False:
-            self.ocr_download_content(pdf_url, PDF_file_path, TXT_file_path)
-        
+            try:
+                self.ocr_download_content(pdf_url, PDF_file_path, TXT_file_path)
+            except Exception e:
+                print(e)
         pdf_content = open(TXT_file_path, "r")
         txt_content = pdf_content.read()
 
