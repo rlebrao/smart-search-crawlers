@@ -43,6 +43,10 @@ class Sivec(Resource):
         except:
             return ""
 
+    def Merge(self, dict1, dict2):
+        res = {**dict1, **dict2}
+        return res
+
     def do_crawler(self, nome_completo):
         json_response = {}
         bs_obj = self.getBsObject(self.TARGET_URL)
@@ -54,6 +58,7 @@ class Sivec(Resource):
         url_pesquisa_nome = self.get_full_url(bs_obj2.find("a", text="Por Nome").get('href'))
         url_pesquisa_sap = self.get_full_url(bs_obj2.find("a", text="Matrícula SAP").get('href'))
 
+        #Busca por RG
         obj_pesquisa_rg = self.getBsObject(url_pesquisa_rg)
         page_pesquisa_rg = self.get_full_url(obj_pesquisa_rg.find("input",{"name":"procura"}).get('onclick'))
         
@@ -61,20 +66,32 @@ class Sivec(Resource):
         url_page_dados = self.get_full_url(obj_pesquisa_rg_resultado.find_all('a', {'class':'textotab1'})[0].get('href'))
         
         obj_dados = self.getBsObject(url_page_dados)
-        obj_dados_values = obj_dados.find('table',{'class':'table compact'}).find_all('tr')
-        for td in obj_dados_values:
-            for i in td:
-                print(i)
-                # if i.find('span').getText() > -1:
-                    # print(i.get('class'))
-        # for i in obj_dados_values:
-        #     if(i.getText().find(':') > -1):
-        #         print('key: '+i.getText().strip())
-    
-        return json_response
+        obj_table_compact = obj_dados.find_all('table',{'class':'table compact'})
+        list_obj_response = []
+        for key, table in enumerate(obj_table_compact):
+            obj_dados_keys = table.find_all('span',{'class':'textotab2'})
+            obj_dados_values = table.find_all('span',{'class':'textotab'})
+            list_keys = []
+            list_values = []
+            dict_response = {}
+            for i in obj_dados_keys:
+                list_keys.append(i.getText().strip())
+            for i in obj_dados_values:
+                if int(len(i)) > 0 :
+                    list_values.append(i.getText().strip())
+                else:
+                    print(len(i))
+            for key, value in enumerate(list_values):
+                dict_response[list_keys[key]] = value
+            list_obj_response.append(dict_response)
+        print(list_obj_response)    
+        #Fim Busca RG
+
+        return self.Merge(list_obj_response[0], list_obj_response[1])
 
     def post(self):
         params = request.get_json()
         print("Buscando: " + params['nome_completo'])
         result = self.do_crawler(params['nome_completo'])
-        return result       
+        return result
+       
