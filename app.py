@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_restful import Resource, Api
 
+from resources.Arisp import Arisp
 from resources.Arpenp import Arpenp
 from resources.Cadesp import Cadesp
 from resources.Caged import Caged
@@ -15,6 +16,7 @@ app = Flask(__name__)
 api = Api(app)
 
 #Route
+api.add_resource(Arisp, '/arisp')
 api.add_resource(Arpenp,'/arpenp')
 api.add_resource(Cadesp,'/cadesp')
 api.add_resource(Caged, '/caged')
