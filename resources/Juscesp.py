@@ -10,6 +10,7 @@ import sys
 import os
 from pdf2image import convert_from_path
 import logging
+from common import util
 
 class Jucesp(Resource):
     HOSTNAME = 'http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com'
@@ -31,7 +32,7 @@ class Jucesp(Resource):
             print('Downloading Pdf file...')
             f.write(r.content)
         print("Download completed")
-        PDF_pages = convert_from_path(PDF_file_path, 500)
+        PDF_pages = convert_from_path(PDF_file_path, 150)
         image_counter = 1
         dirname = os.path.dirname
         for page in PDF_pages:
@@ -108,7 +109,10 @@ class Jucesp(Resource):
 
         return json_response
     def post(self):
-        params = request.get_json()
-        print("Buscando: " + params['cnpj'])
-        result = self.do_crawler(params['cnpj'])
-        return result
+        if(not util.checkAuthorization(request.headers)):
+            return {"message": "ERROR: Chave de acesso inválida"}, 401
+        else:
+            params = request.get_json()
+            print("Buscando: " + params['cnpj'])
+            result = self.do_crawler(params['cnpj'])
+            return result

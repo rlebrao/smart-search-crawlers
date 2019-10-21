@@ -10,7 +10,7 @@ import sys
 import os
 from pdf2image import convert_from_path
 import logging
-
+from common import util
 class Sivec(Resource):
     HOSTNAME = 'http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com'
     SITE_NAME = 'sivec'   
@@ -48,7 +48,6 @@ class Sivec(Resource):
         return res
 
     def do_crawler(self, nome_completo):
-        json_response = {}
         bs_obj = self.getBsObject(self.TARGET_URL)
         page2_url = bs_obj.find('form', id="nomeForm").get('action')
         page2_url = self.get_full_url(page2_url)
@@ -79,19 +78,19 @@ class Sivec(Resource):
             for i in obj_dados_values:
                 if int(len(i)) > 0 :
                     list_values.append(i.getText().strip())
-                else:
-                    print(len(i))
             for key, value in enumerate(list_values):
                 dict_response[list_keys[key]] = value
             list_obj_response.append(dict_response)
-        print(list_obj_response)    
         #Fim Busca RG
 
         return self.Merge(list_obj_response[0], list_obj_response[1])
 
     def post(self):
-        params = request.get_json()
-        print("Buscando: " + params['nome_completo'])
-        result = self.do_crawler(params['nome_completo'])
-        return result
+        if(not util.checkAuthorization(request.headers)):
+            return {"message": "ERROR: Chave de acesso inválida"}, 401
+        else:
+            params = request.get_json()
+            print("Buscando: " + params['nome_completo'])
+            result = self.do_crawler(params['nome_completo'])
+            return result
        

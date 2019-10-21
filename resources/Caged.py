@@ -6,6 +6,7 @@ import json
 from flask import jsonify, request
 import logging
 import os 
+from common import util
 
 class Caged(Resource):
     HOSTNAME = 'http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com'
@@ -173,16 +174,19 @@ class Caged(Resource):
         return json_response    
 
     def post(self):
-        params = request.get_json()
-        json_response = {}
-        #CNPJ, CEI, CPF, Razao social ou CREA
-        result_autorizado_responsavel = self.do_crawler_autorizado_responsavel(params['cnpj'])
-        #Somente CNPJ
-        result_empresa = self.do_crawler_empresa(params['cnpj'])
-        #CPF, Nome ou PIS
-        result_trabalhador = self.do_crawler_trabalhador(params['cpf'])
-        json_response = result_autorizado_responsavel.copy()
-        json_response.update(result_empresa)
-        json_response.update(result_trabalhador)
-        logging.info(json_response)
-        return json_response
+        if(not util.checkAuthorization(request.headers)):
+            return {"message": "ERROR: Chave de acesso inválida"}, 401
+        else:        
+            params = request.get_json()
+            json_response = {}
+            #CNPJ, CEI, CPF, Razao social ou CREA
+            result_autorizado_responsavel = self.do_crawler_autorizado_responsavel(params['cnpj'])
+            #Somente CNPJ
+            result_empresa = self.do_crawler_empresa(params['cnpj'])
+            #CPF, Nome ou PIS
+            result_trabalhador = self.do_crawler_trabalhador(params['cpf'])
+            json_response = result_autorizado_responsavel.copy()
+            json_response.update(result_empresa)
+            json_response.update(result_trabalhador)
+            logging.info(json_response)
+            return json_response

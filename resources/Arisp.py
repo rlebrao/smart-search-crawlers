@@ -10,6 +10,7 @@ import sys
 import os
 from pdf2image import convert_from_path
 import logging
+from common import util
 class Arisp(Resource):
 
     target_url = "http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/arisp/login.html"
@@ -160,7 +161,9 @@ class Arisp(Resource):
 
     def post(self):
         params = request.get_json()
-        json_response = {}
-        json_response['generated_pdf_url'] = self.do_crawler(params['cpf'])
-
-        return json_response
+        if(not util.checkAuthorization(request.headers)):
+            return {"message": "ERROR: Chave de acesso inválida"}, 401
+        else:
+            json_response = {}
+            json_response['link_para_pdf'] = self.do_crawler(params['cpf'])
+            return json_response

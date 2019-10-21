@@ -4,6 +4,7 @@ import re
 from bs4 import BeautifulSoup
 import json
 from flask import jsonify, request
+from common import util
 
 class Cadesp(Resource):
     HOSTNAME = 'http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com'
@@ -96,6 +97,9 @@ class Cadesp(Resource):
         return dict_final_response
     
     def post(self):
-        params = request.get_json()
-        result = self.do_crawler(params['cnpj'])
-        return result
+        if(not util.checkAuthorization(request.headers)):
+            return {"message": "ERROR: Chave de acesso inválida"}, 401
+        else:        
+            params = request.get_json()
+            result = self.do_crawler(params['cnpj'])
+            return result

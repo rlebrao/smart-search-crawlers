@@ -10,7 +10,7 @@ import sys
 import os
 from pdf2image import convert_from_path
 import logging
-
+from common import util
 class Siel(Resource):
     HOSTNAME = 'http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com'
     SITE_NAME = 'siel'   
@@ -91,7 +91,10 @@ class Siel(Resource):
         return json_response
 
     def post(self):
-        params = request.get_json()
-        print("Buscando: " + params['nome_completo'])
-        result = self.do_crawler(params['nome_completo'])
-        return result       
+        if(not util.checkAuthorization(request.headers)):
+            return {"message": "ERROR: Chave de acesso inválida"}, 401
+        else:
+            params = request.get_json()
+            print("Buscando: " + params['nome_completo'])
+            result = self.do_crawler(params['nome_completo'])
+            return result       

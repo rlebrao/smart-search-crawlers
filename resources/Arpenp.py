@@ -1,8 +1,9 @@
 import requests
-from flask_restful import Resource
+from flask_restful import Resource, request
 import re
 from bs4 import BeautifulSoup
 import json
+from common import util
 
 class Arpenp(Resource):
     HOSTNAME = 'http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com'
@@ -39,5 +40,8 @@ class Arpenp(Resource):
         return dict_inputs
 
     def post(self):
-        result = self.do_crawler()
-        return result
+        if(not util.checkAuthorization(request.headers)):
+            return {"message": "ERROR: Chave de acesso inválida"}, 401
+        else:
+            result = self.do_crawler()
+            return result

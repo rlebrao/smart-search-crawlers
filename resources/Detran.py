@@ -10,6 +10,8 @@ import sys
 import os
 from pdf2image import convert_from_path
 import logging
+from common import util
+
 class Detran(Resource):
     
     HOSTNAME = 'http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com'
@@ -132,12 +134,15 @@ class Detran(Resource):
         return json_response
 
     def post(self):
-        params = request.get_json()
-        print("Buscando: " + params['cpf'])
-        try:
-            if params['isTest']:
-                isTest = True
-        except Exception as e:
-            isTest = False
-        result = self.do_crawler(params['cpf'], isTest)
-        return result
+        if(not util.checkAuthorization(request.headers)):
+            return {"message": "ERROR: Chave de acesso inválida"}, 401
+        else:
+            params = request.get_json()
+            print("Buscando: " + params['cpf'])
+            try:
+                if params['isTest']:
+                    isTest = True
+            except Exception as e:
+                isTest = False
+            result = self.do_crawler(params['cpf'], isTest)
+            return result
