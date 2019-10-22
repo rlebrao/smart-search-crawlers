@@ -13,7 +13,7 @@ class BolsaFamilia(Resource):
         print("Requesting URL: " + url_next_layer)
         # print("\n requesting URL:", url_next_layer)
         res_layer = requests.get(url_next_layer).content
-        return BeautifulSoup(res_layer, features="lxml")~
+        return BeautifulSoup(res_layer, features="lxml")
     
     def do_crawler(self, **kargs):
         dict_query  = {}
@@ -33,14 +33,17 @@ class BolsaFamilia(Resource):
             return {"message": "ERROR: Chave de acesso inválida"}, 401
         else:
             params = request.get_json()
-            if 'nis' not in params:
-                return {"message":"Parametro 'nis' é obrigatório"}, 400
-            if 'ano_mes_referencia' not in params:
-                return {"message":"Parametro 'ano_mes_referencia' é obrigatório"}, 400
-            if 'ano_mes_competencia' not in params:
-                return {"message":"Parametro 'ano_mes_competencia' é obrigatório"}, 400
+            if params:
+                if 'nis' not in params:
+                    return {"message":"Parametro 'nis' é obrigatório"}, 400
+                if 'ano_mes_referencia' not in params:
+                    return {"message":"Parametro 'ano_mes_referencia' é obrigatório"}, 400
+                if 'ano_mes_competencia' not in params:
+                    return {"message":"Parametro 'ano_mes_competencia' é obrigatório"}, 400
+                else:
+                    result = self.do_crawler(nis=params['nis'], ano_mes_competencia = params['ano_mes_competencia'],
+                    ano_mes_referencia = params['ano_mes_referencia'])
+                    return result
             else:
-                result = self.do_crawler(nis=params['nis'], ano_mes_competencia = params['ano_mes_competencia'],
-                 ano_mes_referencia = params['ano_mes_referencia'])
-                return result
-                
+                return {"message":"Requisição inválida"}, 400
+              
