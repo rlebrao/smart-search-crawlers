@@ -36,13 +36,15 @@ class Escavador(Resource):
                     return {"message":"Parâmetro inválido"},400
                 if params:
                     if 'term' in params:
-                        return self.search(access_token, params['term'])
+                        return self.search_paid(access_token, params['term'])
+                    elif 'cpf' in params:
+                        return self.free_search(access_token, params['cpf'])
                     else:
                         return {"message":"Parâmetro inválido"}, 400
                 else:
                     return {"message":"Parâmetros obrigatórios não enviados"}, 400
 
-    def search(self, access_token, search_term):
+    def search_paid(self, access_token, search_term):
         url = 'https://www.escavador.com/api/v1/busca'
 
         params = {
@@ -57,4 +59,21 @@ class Escavador(Resource):
         }
 
         response = requests.request('GET', url, headers=headers, params=params, verify=False)
-        return response.json()['items']
+        if response.status_code is 200:
+            return response.json()['items']
+        else:
+            return {"message":"Falha na consulta"}, 400
+
+    def free_search(self, access_token, cpf):
+        url = 'https://www.escavador.com/api/v1/async/resultados'
+        headers = {
+            'Authorization': 'Bearer {}'.format(access_token),
+            'X-Requested-With': 'XMLHttpRequest'
+        }
+        url = url + "?BUSCA_POR_DOCUMENTO={}".format(cpf)
+        print(url)
+        response = requests.request('GET', url, headers=headers, verify=False)
+        if response.status_code is 200:
+            return response.json()
+        else:
+            return {"message":"Falha na busca"},400
