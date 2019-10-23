@@ -13,6 +13,7 @@ from resources.Siel import Siel
 from resources.Sivec import Sivec
 from resources.BolsaFamilia import BolsaFamilia
 from resources.Escavador import Escavador
+from resources.Jusbrasil import Jusbrasil
 
 app = Flask(__name__)
 api = Api(app)
@@ -30,6 +31,7 @@ api.add_resource(Siel, '/siel')
 api.add_resource(Sivec, '/sivec')
 api.add_resource(BolsaFamilia, '/bolsa-familia')
 api.add_resource(Escavador, '/escavador')
+api.add_resource(Jusbrasil,'/jusbrasil')
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)
