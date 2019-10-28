@@ -7,10 +7,15 @@ Esse repositório inclui os cralwers dos seguintes sistemas do MPSP:
  - Censec
  - Detran
  - Infocrim
- - Jucesp (em desenvolvimento)
- - Siel (em desenvolvimento)
- - Sivec (em desenvolvimento)
+ - Jucesp 
+ - Siel 
+ - Sivec 
  
+ Sistemas Adicionais:
+ - Bolsa família
+ - Escavador
+ - Jusbrasil
+
 ## Dependências
 Python >= 3.6 <br>
 pip >= 19.0.0
