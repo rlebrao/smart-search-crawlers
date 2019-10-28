@@ -79,6 +79,9 @@ class Censec(Resource):
             return {"message": "ERROR: Chave de acesso inválida"}, 401
         else:
             params = request.get_json()
-            print("Buscando: " + params['cnpj'])
-            result = self.do_crawler(params['cnpj'])
-            return result
+            if 'cnpj' in params:
+                result = self.do_crawler(params['cnpj'])
+                return result
+            else:
+                return {"message":"Parâmetros inválidos"}, 400
+            

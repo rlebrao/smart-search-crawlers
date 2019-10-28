@@ -24,6 +24,8 @@ class BolsaFamilia(Resource):
         result = requests.get(self.SITE_URL + "?" + urlencode(dict_query))
         res_json = result.json()
         json_response = {}
+        if result.status_code == 400:
+            return {"message":"Nenhum resultado encontrado"}, 404
         for key, value in enumerate(res_json[0]):
             json_response[value] = res_json[0][value]
         return json_response

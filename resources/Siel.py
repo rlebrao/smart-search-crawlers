@@ -95,6 +95,8 @@ class Siel(Resource):
             return {"message": "ERROR: Chave de acesso inválida"}, 401
         else:
             params = request.get_json()
-            print("Buscando: " + params['nome_completo'])
-            result = self.do_crawler(params['nome_completo'])
-            return result       
+            if 'nome_completo' in params:
+                result = self.do_crawler(params['nome_completo'])
+                return result       
+            else:
+                return {"message":"Parâmetros incorretos"}, 400

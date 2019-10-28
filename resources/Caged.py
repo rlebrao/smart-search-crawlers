@@ -99,7 +99,7 @@ class Caged(Resource):
         dict_response['ultima_atualizacao'] = bs_obj4.find('span',{'id':'txtCompetencia'}).getText()
         return dict_response
         
-    def do_crawler_trabalhador(self, search_key):
+    def do_crawler_trabalhador(self):
         bs_obj = self.getBsObject(self.TARGET_URL)
         page2_url = bs_obj.find('form',{'id':'fm1'}).get('action')
         page2_url = self.get_full_url(page2_url)
@@ -180,13 +180,17 @@ class Caged(Resource):
             params = request.get_json()
             json_response = {}
             #CNPJ, CEI, CPF, Razao social ou CREA
-            result_autorizado_responsavel = self.do_crawler_autorizado_responsavel(params['cnpj'])
-            #Somente CNPJ
-            result_empresa = self.do_crawler_empresa(params['cnpj'])
+            if 'cnpj' in params:
+                result_autorizado_responsavel = self.do_crawler_autorizado_responsavel(params['cnpj'])
+                #Somente CNPJ
+                result_empresa = self.do_crawler_empresa(params['cnpj'])
+                json_response = result_autorizado_responsavel.copy()
+                json_response.update(result_empresa)
+            if 'cpf' in params:
             #CPF, Nome ou PIS
-            result_trabalhador = self.do_crawler_trabalhador(params['cpf'])
-            json_response = result_autorizado_responsavel.copy()
-            json_response.update(result_empresa)
-            json_response.update(result_trabalhador)
+                result_trabalhador = self.do_crawler_trabalhador()
+                json_response.update(result_trabalhador)
+            if 'cpf' not in params and 'cnpj' not in params:
+                return {"message":"Paramêtros inválidos"}
             logging.info(json_response)
             return json_response

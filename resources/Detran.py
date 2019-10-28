@@ -138,11 +138,13 @@ class Detran(Resource):
             return {"message": "ERROR: Chave de acesso inválida"}, 401
         else:
             params = request.get_json()
-            print("Buscando: " + params['cpf'])
             try:
                 if params['isTest']:
                     isTest = True
             except Exception as e:
                 isTest = False
-            result = self.do_crawler(params['cpf'], isTest)
-            return result
+            if 'cpf' in params:
+                result = self.do_crawler(params['cpf'], isTest)
+                return result
+            else:
+                return {"message":"Parâmetros inválidos"}, 400

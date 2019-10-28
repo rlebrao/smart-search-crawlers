@@ -71,9 +71,12 @@ class Escavador(Resource):
             'X-Requested-With': 'XMLHttpRequest'
         }
         url = url + "?BUSCA_POR_DOCUMENTO={}".format(cpf)
-        print(url)
         response = requests.request('GET', url, headers=headers, verify=False)
+        # print(response)
+        json_response = response.json()
+        if len(json_response['items']) == 0:
+            return {"message":"Dados não encontrados para esse CPF"}, 404
         if response.status_code is 200:
-            return response.json()
+            return json_response
         else:
             return {"message":"Falha na busca"},400

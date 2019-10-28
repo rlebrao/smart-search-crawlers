@@ -60,7 +60,7 @@ class Infocrim(Resource):
         except:
             return ""
 
-    def do_crawler(self):
+    def do_crawler(self, cpf):
         bs_obj = self.getBsObject(self.TARGET_URL)
         page2_url = bs_obj.find('img',{'alt':'Envia dados'}).find_parent("a").get("href")
         page2_url = self.get_full_url(page2_url) 
@@ -96,11 +96,13 @@ class Infocrim(Resource):
             return {"message": "ERROR: Chave de acesso inválida"}, 401
         else:
             params = request.get_json()
-            print("Buscando: " + params['cpf'])
             try:
                 if params['isTest']:
                     isTest = True
             except Exception as e:
                 isTest = False
-            result = self.do_crawler()
-            return result   
+            if 'cpf' in params:
+                result = self.do_crawler(params['cpf'])
+                return result   
+            else:
+                return {"message":"Parâmetros inválidos"}

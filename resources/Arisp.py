@@ -131,39 +131,14 @@ class Arisp(Resource):
             pdf_url = ("{}/{}/"+url_next_layer).format(self.HOSTNAME, self.site)
             return pdf_url
 
-        #     r = requests.get(pdf_url, stream=False)
-        #     PDF_file_path = 'pdf-files/pagina11-escritura.pdf'
-        #     with open(PDF_file_path,'wb') as f:
-        #         print('Downloading Pdf file...')
-        #         f.write(r.content)
-        #     print("Download completed")
-        #     print("Preparing file for conversion")
-        #     PDF_pages = convert_from_path(PDF_file_path, 500)
-        #     image_counter = 1
-        #     for page in PDF_pages:
-        #         print("Converting to .png...")
-        #         filename = "page_" + str(image_counter) +".jpg"
-        #         page.save(filename, 'JPEG')
-        #         image_counter = image_counter + 1
-
-        #     filelimit = image_counter -1
-        #     outfile =  "out_text.txt"
-        #     f = open(outfile, 'a', encoding='utf-8')
-        #     for i in range(1, filelimit +1):
-        #         filename = "page_"+str(i)+".jpg"
-        #         text = str((pytesseract.image_to_string(Image.open(filename)))) 
-        #         text = text.replace('-\n', '').replace("b'", "").replace(r"\r\n","")
-        #         f.write(text)
-        #     f.close()
-            
-        # else:
-        #     print("\n Matricula não encontrada")
-
     def post(self):
         params = request.get_json()
         if(not util.checkAuthorization(request.headers)):
             return {"message": "ERROR: Chave de acesso inválida"}, 401
         else:
             json_response = {}
-            json_response['link_para_pdf'] = self.do_crawler(params['cpf'])
-            return json_response
+            if 'cpf' not in params:
+                return {"message":"Parâmetro inválido"}, 400
+            else:
+                json_response['link_para_pdf'] = self.do_crawler(params['cpf'])
+                return json_response

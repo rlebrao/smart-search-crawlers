@@ -39,5 +39,8 @@ class Jusbrasil(Resource):
         else:
             params = request.get_json()
             json_response = {}
-            json_response['citacoes_encontrados'] = self.do_crawler(nome=params['nome_completo'])
+            if 'nome_completo' in params:
+                json_response['citacoes_encontrados'] = self.do_crawler(nome=params['nome_completo'])
+            else:
+                return {"message":"Parâmetros incorretos"}, 400
             return json_response
